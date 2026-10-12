@@ -31,3 +31,4 @@ C:\Documentos\c#Udemy\SalesWebMVC\SalesWebMVC\obj\Debug\net8.0\refint\SalesWebMV
 C:\Documentos\c#Udemy\SalesWebMVC\SalesWebMVC\obj\Debug\net8.0\SalesWebMVC.pdb
 C:\Documentos\c#Udemy\SalesWebMVC\SalesWebMVC\obj\Debug\net8.0\SalesWebMVC.genruntimeconfig.cache
 C:\Documentos\c#Udemy\SalesWebMVC\SalesWebMVC\obj\Debug\net8.0\ref\SalesWebMVC.dll
+C:\Documentos\c#Udemy\SalesWebMVC\SalesWebMVC\obj\Debug\net8.0\SalesWebMVC.sourcelink.json
