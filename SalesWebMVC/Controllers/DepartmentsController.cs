@@ -13,11 +13,11 @@ public class DepartmentsController : Controller
     }
 
     // GET: DEPARTMENTS
-    public async Task<IActionResult> Index()    
+     public async Task<IActionResult> Index()    
     {
         return View(await _context.Department.ToListAsync());
     }
-
+   
     // GET: DEPARTMENTS/Details/5
     public async Task<IActionResult> Details(int? id)
     {

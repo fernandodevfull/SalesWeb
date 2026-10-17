@@ -1,8 +1,23 @@
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("SalesWebMVCContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMVCContext' not found.");
 
-builder.Services.AddDbContext<SalesWebMVCContext>(options => options.UseSqlServer(connectionString));
+//var connectionString = builder.Configuration.GetConnectionString("SalesWebMVCContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMVCContext' not found.");
+//builder.Services.AddDbContext<SalesWebMVCContext>(options => options.UseMySql(connectionString));
+
+
+var connectionString = builder.Configuration.GetConnectionString("SalesWebMVCContext");
+
+// 1. Define a versão manualmente
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
+
+// 2. Passa a versão como segundo argumento
+builder.Services.AddDbContext<SalesWebMVCContext>(options =>
+    options.UseMySql(connectionString, serverVersion)
+);
+
+
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
