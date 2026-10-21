@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\lib\bootstrap\dist\bootstrap-flaty.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-flaty.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <!-- Provedor do MySQL (Pomelo) compatível com .NET 8 -->
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
     
