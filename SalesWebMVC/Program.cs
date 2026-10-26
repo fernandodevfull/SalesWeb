@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SalesWebMVC;
+using SalesWebMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +22,7 @@ builder.Services.AddDbContext<SalesWebMVCContext>(options =>
 );
 
 builder.Services.AddScoped<SeedingService>();
-
+builder.Services.AddScoped<SellerService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -31,6 +32,9 @@ using (var scope = app.Services.CreateScope())
 {
     var seedingService = scope.ServiceProvider.GetRequiredService<SeedingService>();
     seedingService.Seed();
+
+    
+
 }
 
 // Configure the HTTP request pipeline.
