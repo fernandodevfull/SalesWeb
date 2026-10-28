@@ -28,7 +28,8 @@ namespace SalesWebMVC.Services
 
         public Seller FindById(int id)
         {
-            return _context.Sellers          
+            return _context.Sellers
+                .Include(obj => obj.Department)
                 .FirstOrDefault(obj => obj.Id == id)!;
         }
 
