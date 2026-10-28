@@ -2,7 +2,7 @@
 {
     public class Department
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
@@ -10,7 +10,7 @@
 
         public Department(int ID, string name)
         {
-            this.ID = ID;
+            this.Id = ID;
             this.Name = name;
         }
 

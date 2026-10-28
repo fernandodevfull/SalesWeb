@@ -1,5 +1,7 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using SalesWebMVC.Models;
+
 
 namespace SalesWebMVC.Services
 {
@@ -20,8 +22,20 @@ namespace SalesWebMVC.Services
 
         public void Insert(Seller obj)
         {
-            obj.Department = _context.Department.First();
             _context!.Add(obj);
+            _context.SaveChanges();
+        }
+
+        public Seller FindById(int id)
+        {
+            return _context.Sellers          
+                .FirstOrDefault(obj => obj.Id == id)!;
+        }
+
+        public void Remove(int id)
+        {
+            var obj = _context!.Sellers.Find(id);
+            _context.Sellers.Remove(obj!);
             _context.SaveChanges();
         }
 
