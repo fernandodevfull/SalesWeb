@@ -2,6 +2,8 @@
 using SalesWebMVC.Services;
 using SalesWebMVC.Models;
 using SalesWebMVC.Models.ViewModels;
+using SalesWebMVC.Services.Exceptions;
+
 namespace SalesWebMVC.Controllers
 {
     public class SellerController : Controller
@@ -83,6 +85,46 @@ namespace SalesWebMVC.Controllers
             }
 
             return View(obj);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if(id == null) // teste se o id nao existe
+            {
+                return NotFound();
+            }
+            var obj = _selleService.FindById(id.Value);
+            if(obj == null) // teste se o id é nulo
+            {
+                return NotFound();
+            }
+            List<Department> departments = _departmentService.FindAll();
+            SellerFormViewModel viewmodel = new SellerFormViewModel { Seller = obj, Departments = departments };
+            return View(viewmodel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id,Seller seller)
+        {
+            if(id != seller.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                _selleService.Update(seller);
+                return RedirectToAction(nameof(Index));
+            }
+            catch(NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrencyException)
+            {
+                return BadRequest();
+            }
+
         }
     }
 }
